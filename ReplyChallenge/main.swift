@@ -17,7 +17,7 @@ extension String {
 var fileName = "a_solar"
 var devs = [Dev]()
 var managers = [Replyer]()
-var matrix = Matrix(rows: 0, columns: 0, values: [String]())
+var floorPlan = Matrix(rows: 0, columns: 0, values: [String]())
 
 //MARK: READ FILE
 func readFile() {
@@ -36,7 +36,7 @@ func readFile() {
         gridValues.append(contentsOf: valueText.map(String.init))
     }
 
-    matrix = Matrix(rows: gridWidth, columns: gridHeight, values: gridValues)
+    floorPlan = Matrix(rows: gridWidth, columns: gridHeight, values: gridValues)
 
     guard let devAmountText = s.nextLine(), let devAmount = Int(devAmountText) else { fatalError() }
 
@@ -67,7 +67,8 @@ func readFile() {
 
 //MARK: MAIN CODE
 func doStuff() {
-    
+    readFile()
+    writeAnswer()
 }
 
 //MARK: WRITE ANSWER
@@ -76,10 +77,10 @@ func writeAnswer() {
     sw?.write(data: "Hello, World!")
 }
 
-readFile()
 doStuff()
-writeAnswer()
 
-print("grid:\n", matrix, "\n")
+print("grid:\n", floorPlan, "\n")
 print("devs:\n", devs, "\n")
 print("managers:\n", managers, "\n")
+
+let room = Room(devs: devs, managers: managers, floorPlan: floorPlan)

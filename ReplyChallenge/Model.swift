@@ -75,7 +75,20 @@ public class Dev: Replyer {
     }
 }
 
-//public class Man {
-//    let id: Int
-//    let company: String
-//}
+public struct Room {
+    var devs: [Dev]
+    var managers: [Replyer]
+    var floorPlan: Matrix<Seat>
+    var score: Int = 0
+
+    func updateScore() -> Int {
+        let filledGrid = fillGrid(floorPlan, with: devs, and: managers)
+        return 0
+    }
+}
+
+public enum Seat: Equatable {
+    case unavailable
+    case dev(Int)
+    case manager(Int)
+}
