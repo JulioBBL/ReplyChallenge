@@ -8,8 +8,9 @@
 
 import Foundation
 
+let MUTATION_CHANCE = 0.05
+
 public class Replyer: Equatable {
-    let MUTATION_CHANCE = 0.05
     var id: Int
     var bonus: Int
     var company: String
@@ -132,7 +133,7 @@ public class Room: Comparable {
     }
     
     func cross(_ otherIndividual: Room) -> Room {
-        var individual = Room(devs: devs, managers: managers, floorPlan: floorPlan, score: score)
+        var individual = Room(devs: devs, managers: managers, floorPlan: floorPlan)
         
         //DIFFERENT METHODS ARE AVAILABLE:
         //single cross, multi cross, uniform cross (we are using single cross)
@@ -152,7 +153,7 @@ public class Room: Comparable {
             individual.managers[i] = otherIndividual.managers[i]
         }
         
-        
+        individual.updateScore()
         return individual
     }
     
