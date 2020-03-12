@@ -44,6 +44,8 @@ class StreamReader {
                 let subData = buffer.subdata(in: buffer.startIndex..<range.lowerBound)
                 let line = String(data: subData, encoding: encoding)
                 buffer.replaceSubrange(buffer.startIndex..<range.upperBound, with: [])
+                
+                print("Read line:",line)
                 return line
             } else {
                 let tempData = fileHandle.readData(ofLength: chunkSize)
