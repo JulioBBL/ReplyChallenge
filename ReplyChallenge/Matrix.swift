@@ -68,7 +68,7 @@ public struct Matrix<T>: CustomStringConvertible {
     }
 }
 
-func fillGrid(_ places: Matrix<Seat>, with devs: [Dev], and mandagers: [Replyer]) -> Matrix<Replyer?> {
+public func fillGrid(_ places: Matrix<Seat>, with devs: [Dev], and mandagers: [Replyer]) -> Matrix<Replyer?> {
     let seats = places.grid
     let enumeratedSeats = seats.enumerated()
     var values = [Replyer?](repeating: nil, count: seats.count)

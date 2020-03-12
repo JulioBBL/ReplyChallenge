@@ -18,6 +18,14 @@ public class Judge {
         generatePopulation(floorPlan: floorPlan, devs: devs, managers: managers)
     }
     
+    func evolute() -> Room {
+        for _ in 0...Judge.GENERATIONS {
+            generation()
+        }
+        
+        return self.rooms.sorted().first!
+    }
+    
     func generation() {
         self.mutate()
         self.cross()
@@ -33,11 +41,16 @@ public class Judge {
     }
     
     func mutate() {
-//        self.rooms = rooms.map { $0.mutate() }
+        rooms.forEach({ $0.mutate() })
     }
     
     func cross() {
+        var new = self.rooms.map { (roomA) -> Room in
+            let roomB = self.rooms[Int.random(in: 0..<self.rooms.count)]
+            return roomA.cross(roomB)
+        }
         
+        self.rooms.append(contentsOf: new)
     }
     
     func killPopulation() {

@@ -82,26 +82,51 @@ func readFile() {
         let company = values.remove(at: 0)
         guard let bonus = Int(values.remove(at: 0)) else { fatalError() }
         
-        managers.append(Replyer(id: i, company: company, bonus: bonus))
+        managers.append(Replyer(id: i + devAmount, company: company, bonus: bonus))
     }
 }
 
 //MARK: MAIN CODE
 func doStuff() {
     readFile()
-    writeAnswer()
+    
+    let champion = Judge(floorPlan: floorPlan, devs: devs, managers: managers).evolute()
+    
+    writeAnswer(champion)
 }
 
 //MARK: WRITE ANSWER
-func writeAnswer() {
+func writeAnswer(_ room: Room) {
+    struct Answer {
+        let id: Int
+        let x: Int
+        let y: Int
+    }
+    
     let sw = StreamWriter(path: (NSString(string:"~/Desktop/\(fileName)_output.txt").expandingTildeInPath ))
-    sw?.write(data: "Hello, World!")
+    
+    var answerGrid = fillGrid(floorPlan, with: room.devs, and: room.managers)
+    var answers = [Answer]()
+    
+    for i in 0..<answerGrid.rows {
+        for j in 0..<answerGrid.columns {
+            guard answerGrid.indexIsValid(row: i, column: j) else { fatalError() }
+            guard let x = answerGrid[i, j] else { fatalError() }
+            
+            answers.append(Answer(id: x.id, x: i, y: j))
+        }
+    }
+    
+    answers.sort { (a, b) -> Bool in
+        return a.id < b.id
+    }
+    
+    for a in answers {
+        sw?.writeLine(data: "\(a.x) \(a.y)")
+    }
 }
 
 doStuff()
 
-print("grid:\n", floorPlan, "\n")
-print("devs:\n", devs, "\n")
-print("managers:\n", managers, "\n")
 
-let room = Room(devs: devs, managers: managers, floorPlan: floorPlan)
+
