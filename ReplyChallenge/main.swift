@@ -10,7 +10,7 @@ import Foundation
 
 
 //MARK: READ FILE
-let pathURL = URL(fileURLWithPath: (NSString(string:"~/Desktop/1_victoria_lake.txt").expandingTildeInPath ))
+let pathURL = URL(fileURLWithPath: (NSString(string:"~/Desktop/_.txt").expandingTildeInPath ))
 let s = StreamReader(url: pathURL)
 while let line = s?.nextLine() {
     print(line)
@@ -20,6 +20,6 @@ while let line = s?.nextLine() {
 
 
 //MARK: WRITE ANSWER
-let sw = StreamWriter(path: (NSString(string:"~/Desktop/1_victoria_lake_output.txt").expandingTildeInPath ))
+let sw = StreamWriter(path: (NSString(string:"~/Desktop/_output.txt").expandingTildeInPath ))
 sw?.write(data: "Hello, World!")
 
