@@ -8,7 +8,11 @@
 
 import Foundation
 
-public class Replyer {
+public class Replyer: Equatable {
+    public static func == (lhs: Replyer, rhs: Replyer) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     var id: Int
     var bonus: Int
     var company: String
@@ -75,15 +79,34 @@ public class Dev: Replyer {
     }
 }
 
-public struct Room {
+public class Room: Comparable {
     var devs: [Dev]
     var managers: [Replyer]
     var floorPlan: Matrix<Seat>
     var score: Int = 0
+    var isDead: Bool = false
+    
+    init(devs: [Dev], managers: [Replyer], floorPlan: Matrix<Seat>) {
+        self.devs = devs
+        self.managers = managers
+        self.floorPlan = floorPlan
+    }
 
     func updateScore() -> Int {
-        let filledGrid = fillGrid(floorPlan, with: devs, and: managers)
+//        let filledGrid = fillGrid(floorPlan, with: devs, and: managers)
         return 0
+    }
+    
+    public static func < (lhs: Room, rhs: Room) -> Bool {
+        return lhs.score < rhs.score
+    }
+    
+    public static func == (lhs: Room, rhs: Room) -> Bool {
+        return lhs.devs == rhs.devs && lhs.managers == rhs.managers
+    }
+    
+    public func dieMF() {
+        self.isDead = true
     }
 }
 
