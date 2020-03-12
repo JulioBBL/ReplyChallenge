@@ -17,7 +17,7 @@ extension String {
 var fileName = "a_solar"
 var devs = [Dev]()
 var managers = [Replyer]()
-var matrix = Matrix(rows: 0, columns: 0, values: [String]())
+var matrix = Matrix(rows: 0, columns: 0, values: [Seat]())
 
 //MARK: READ FILE
 func readFile() {
@@ -35,8 +35,29 @@ func readFile() {
         guard let valueText = s.nextLine() else { fatalError() }
         gridValues.append(contentsOf: valueText.map(String.init))
     }
+    
+    var newValues = [Seat]()
+    var amountOfDevs = 0
+    var amountOfMans = 0
+    for value in gridValues {
+        switch value {
+        case "#":
+            newValues.append(.unavailable)
+            
+        case "_":
+            newValues.append(.dev(amountOfDevs))
+            amountOfDevs += 1
+            
+        case "M":
+            newValues.append(.manager(amountOfDevs))
+            amountOfMans += 1
+            
+        default:
+            fatalError("não era pra ter um \(value) aqui")
+        }
+    }
 
-    matrix = Matrix(rows: gridWidth, columns: gridHeight, values: gridValues)
+    matrix = Matrix(rows: gridWidth, columns: gridHeight, values: newValues)
 
     guard let devAmountText = s.nextLine(), let devAmount = Int(devAmountText) else { fatalError() }
 
