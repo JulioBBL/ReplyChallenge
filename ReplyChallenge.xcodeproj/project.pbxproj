@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3150A3C4241A8F2600C5ED45 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3150A3C3241A8F2600C5ED45 /* Model.swift */; };
 		3150A3C6241A9A0200C5ED45 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3150A3C5241A9A0200C5ED45 /* Matrix.swift */; };
+		3294B819241AB35D00F38ECD /* Genetica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3294B818241AB35D00F38ECD /* Genetica.swift */; };
 		A71089B7241A74990091530A /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71089B6241A74990091530A /* StreamReader.swift */; };
 		A71089CB241A7F590091530A /* StreamWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71089CA241A7F590091530A /* StreamWriter.swift */; };
 		A72D703D241A715C009639FC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D703C241A715C009639FC /* main.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		3150A3C3241A8F2600C5ED45 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3150A3C5241A9A0200C5ED45 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		3294B818241AB35D00F38ECD /* Genetica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genetica.swift; sourceTree = "<group>"; };
 		A71089B6241A74990091530A /* StreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		A71089C2241A78260091530A /* InputData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputData.h; sourceTree = "<group>"; };
 		A71089C3241A78260091530A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				A71089CA241A7F590091530A /* StreamWriter.swift */,
 				3150A3C3241A8F2600C5ED45 /* Model.swift */,
 				3150A3C5241A9A0200C5ED45 /* Matrix.swift */,
+				3294B818241AB35D00F38ECD /* Genetica.swift */,
 			);
 			path = ReplyChallenge;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				A72D703D241A715C009639FC /* main.swift in Sources */,
 				3150A3C6241A9A0200C5ED45 /* Matrix.swift in Sources */,
 				A71089CB241A7F590091530A /* StreamWriter.swift in Sources */,
+				3294B819241AB35D00F38ECD /* Genetica.swift in Sources */,
 				A71089B7241A74990091530A /* StreamReader.swift in Sources */,
 				3150A3C4241A8F2600C5ED45 /* Model.swift in Sources */,
 			);
@@ -272,7 +276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87G2Y58K9U;
+				DEVELOPMENT_TEAM = DHAN829484;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
